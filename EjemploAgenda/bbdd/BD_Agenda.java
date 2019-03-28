@@ -34,6 +34,7 @@ public class BD_Agenda extends BD_Conector {
 			return false;
 		}
 
+<<<<<<< HEAD
 	}
 
 	public int borrar(Contacto ct) {
@@ -49,16 +50,41 @@ public class BD_Agenda extends BD_Conector {
 			return filas;
 
 		} catch (SQLException e) {
+=======
+	public int borrar(Contacto ct){
+		String cadena="DELETE FROM contactos WHERE nombre='" +  ct.getNombre() 
+		+ "' AND apellidos='" + ct.getApellidos()+"' AND telefono='" + ct.getTelefono()+ "'";	
+		
+		try{
+		this.abrir();
+		s=c.createStatement();
+		int filas=s.executeUpdate(cadena);	
+		s.close();
+		this.cerrar();
+		return filas;
+		
+		}
+		catch ( SQLException e){
+>>>>>>> refs/remotes/origin/master
 			this.cerrar();
 			return -1;
 		}
 	}
+<<<<<<< HEAD
 
 	public String buscarTelefono(Contacto ct) {
 		String cadena = "SELECT * FROM contactos WHERE nombre='" + ct.getNombre() + "' AND apellidos='"
 				+ ct.getApellidos() + "'";
 		try {
 			String t = "";
+=======
+	
+	public  String buscarTelefono(Contacto ct){
+		String cadena="SELECT telefono FROM contactos WHERE nombre='" 
+	+ ct.getNombre() +"' AND apellidos='" + ct.getApellidos() +"'";
+		try{
+			String t="";
+>>>>>>> refs/remotes/origin/master
 			this.abrir();
 			s = c.createStatement();
 			reg = s.executeQuery(cadena);
@@ -85,12 +111,20 @@ public class BD_Agenda extends BD_Conector {
 		try {
 
 			this.abrir();
+<<<<<<< HEAD
 			s = c.createStatement();
 			reg = s.executeQuery(cadena);
 			while (reg.next()) {
 				v.add(new Contacto(reg.getString("nombre")
 						, reg.getString("apellidos")
 						, reg.getString("telefono")));
+=======
+			s=c.createStatement();
+			reg=s.executeQuery(cadena);
+			while ( reg.next()){						
+				 v.add(new Contacto(reg.getString("nombre")
+						 ,reg.getString("apellidos"),reg.getString("telefono")));
+>>>>>>> refs/remotes/origin/master
 			}
 
 			s.close();
