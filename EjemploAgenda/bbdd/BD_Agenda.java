@@ -36,7 +36,8 @@ public class BD_Agenda extends BD_Conector {
 }
 
 	public int borrar(Contacto ct){
-		String cadena="DELETE FROM contactos WHERE nombre='" +  ct.getNombre() + "' AND apellidos='" + ct.getApellidos()+"' AND telefono='" + ct.getTelefono()+ "'";	
+		String cadena="DELETE FROM contactos WHERE nombre='" +  ct.getNombre() 
+		+ "' AND apellidos='" + ct.getApellidos()+"' AND telefono='" + ct.getTelefono()+ "'";	
 		
 		try{
 		this.abrir();
@@ -54,7 +55,8 @@ public class BD_Agenda extends BD_Conector {
 	}
 	
 	public  String buscarTelefono(Contacto ct){
-		String cadena="SELECT telefono FROM contactos WHERE nombre='" + ct.getNombre() +"' AND apellidos='" + ct.getApellidos() +"'";
+		String cadena="SELECT telefono FROM contactos WHERE nombre='" 
+	+ ct.getNombre() +"' AND apellidos='" + ct.getApellidos() +"'";
 		try{
 			String t="";
 			this.abrir();
@@ -87,7 +89,8 @@ public class BD_Agenda extends BD_Conector {
 			s=c.createStatement();
 			reg=s.executeQuery(cadena);
 			while ( reg.next()){						
-				 v.add(new Contacto(reg.getString("nombre"),reg.getString("apellidos"),reg.getString("telefono")));
+				 v.add(new Contacto(reg.getString("nombre")
+						 ,reg.getString("apellidos"),reg.getString("telefono")));
 			}
 			
 			s.close();
